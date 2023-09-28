@@ -1,0 +1,15 @@
+  {
+    "compilerOptions": {
+      "target": "es5",
+      "module": "esnext",
+      "strict": true,
+      "noImplicitAny": true,
+      "removeComments": true,
+      "preserveConstEnums": true,
+      "sourceMap": true,
+      "forceConsistentCasingInFileNames": true,
+    },
+    "files": [
+      "script-crud.ts"
+    ]
+  }

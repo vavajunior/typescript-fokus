@@ -1,0 +1,26 @@
+{
+  "name": "typescript-fokus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script-crud.js",
+  "scripts": {
+    "server": "lite-server",
+    "start": "npm run watch \"npm run server\"",
+    "compile": "tsc",
+    "watch": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vavajunior/typescript-fokus.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/vavajunior/typescript-fokus#readme",
+  "dependencies": {
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
