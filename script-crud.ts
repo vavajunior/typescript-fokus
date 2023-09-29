@@ -33,6 +33,13 @@ const selecionarTarefa = (estadoAtual: EstadoAplicacao, tarefa: Tarefa): EstadoA
     }
 }
 
+const adicionarTarefa = (estadoAtual: EstadoAplicacao, tarefa: Tarefa): EstadoAplicacao => {
+    return {
+        ...estadoAtual,
+        tarefas: [...estadoAtual.tarefas, tarefa],
+    }
+}
+
 const atualizarUI = () => {
     const taskIconSvg = `
         <svg class="app__section-task-icon-status" width="24" height="24" viewBox="0 0 24 24"
@@ -49,12 +56,21 @@ const atualizarUI = () => {
         ulTarefas.innerHTML = ''
     }
 
-    const formAdicionarTarefa = document.querySelector('.app__form-add-task')
+    const formAdicionarTarefa = document.querySelector<HTMLFormElement>('.app__form-add-task')
     const btnAdicionarTarefa = document.querySelector<HTMLButtonElement>('.app__button--add-task')
+    const inputNovaTarefa = document.querySelector<HTMLTextAreaElement>('.app__form-textarea')
+
     if (btnAdicionarTarefa) {
         btnAdicionarTarefa.onclick = () => {
             formAdicionarTarefa?.classList.toggle('hidden')
         }
+    }
+
+    formAdicionarTarefa!.onsubmit = (evento) => {
+        evento.preventDefault()
+        const descricao = inputNovaTarefa!.value
+        estadoAplicacao = adicionarTarefa(estadoAplicacao, { descricao, concluida: false })
+        atualizarUI()
     }
 
     estadoAplicacao.tarefas.forEach(tarefa => {
@@ -81,6 +97,12 @@ const atualizarUI = () => {
             li.classList.add('app__section-task-list-item-complete')
         }
 
+        li.addEventListener("click", () => {
+            console.log('Tarefa selecionada', tarefa)
+            estadoAplicacao = selecionarTarefa(estadoAplicacao, tarefa)
+            atualizarUI()
+        })
+
         li.appendChild(svgIcon)
         li.appendChild(paragraph)
         li.appendChild(button)
@@ -88,3 +110,5 @@ const atualizarUI = () => {
         ulTarefas?.appendChild(li)
     })
 }
+
+atualizarUI()
