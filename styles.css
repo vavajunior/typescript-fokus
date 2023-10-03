@@ -8,6 +8,7 @@
     --linear-botes: linear-gradient(180deg, #B872FF 0%, #144480 100%);
     --fundo-card: rgba(255, 255, 255, 0.50);
     --fundo-card-concludo: rgba(0, 244, 191, 0.40);
+    --fundo-card-selecionado: rgba(208, 234, 11, 0.4);
 }
 
 [data-contexto="foco"] {
@@ -283,6 +284,11 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 150%;
     color: var(--azul-profundo);
     font-family: Montserrat;
+}
+
+.app__section-task-list-item-select.app__section-task-list-item {
+    background: var(--fundo-card-selecionado);
+    cursor: inherit;
 }
 
 .app__section-task-list-item-complete.app__section-task-list-item {
